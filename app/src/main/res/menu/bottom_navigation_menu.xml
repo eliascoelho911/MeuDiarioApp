@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/screen_diary"
+            android:id="@+id/diary_screen"
             android:enabled="true"
             android:icon="@drawable/ic_outline_book_24"
-            android:title="@string/screen_diary"/>
+            android:title="@string/diary_screen"/>
     <item
             android:id="@+id/screen_statistics"
             android:enabled="true"
             android:icon="@drawable/ic_chart_24"
-            android:title="@string/screen_statistics"/>
+            android:title="@string/statistics_screen"/>
     <item
             android:id="@+id/screen_settings"
             android:enabled="true"
             android:icon="@drawable/ic_outline_settings_24"
-            android:title="@string/screen_settings"/>
+            android:title="@string/settings_screen"/>
 </menu>
