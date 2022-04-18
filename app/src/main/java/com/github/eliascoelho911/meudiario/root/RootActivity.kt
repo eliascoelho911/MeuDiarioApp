@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.DiaryFragment
+import com.github.eliascoelho911.meudiario.screen.Screen
 import com.github.eliascoelho911.meudiario.util.getFragmentState
 import com.github.eliascoelho911.meudiario.util.saveFragmentState
 import kotlinx.android.synthetic.main.activity_root.bottomNavigation
+import kotlinx.android.synthetic.main.activity_root.toolbar
 
 private const val SELECTED_ITEM_ON_TAB = "SELECTED_ITEM_ON_TAB"
 private const val DEFAULT_SCREEN = R.id.menu_diary_screen
@@ -58,6 +60,11 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
             }
             replace(R.id.container, fragment)
         }
+        updateToolbarTitle(fragment)
+    }
+
+    private fun updateToolbarTitle(fragment: Fragment) {
+        if (fragment is Screen) toolbar.title = fragment.title
     }
 
     private fun Bundle.saveSelectedItemOnTab() {

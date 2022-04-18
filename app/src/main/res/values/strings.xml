@@ -2,9 +2,9 @@
     <string name="app_name">Meu Diário</string>
 
     <!-- region screen names -->
-    <string name="diary_screen">Diário</string>
-    <string name="statistics_screen">Estatísticas</string>
-    <string name="settings_screen">Configurações</string>
+    <string name="name_diary_screen">Diário</string>
+    <string name="name_statistics_screen">Estatísticas</string>
+    <string name="name_settings_screen">Configurações</string>
     <!-- endregion -->
 
     <!-- region content descriptions -->

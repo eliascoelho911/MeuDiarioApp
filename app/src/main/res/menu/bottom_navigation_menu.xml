@@ -4,15 +4,15 @@
             android:id="@+id/menu_diary_screen"
             android:enabled="true"
             android:icon="@drawable/ic_outline_book_24"
-            android:title="@string/diary_screen"/>
+            android:title="@string/name_diary_screen"/>
     <item
             android:id="@+id/menu_screen_statistics"
             android:enabled="true"
             android:icon="@drawable/ic_chart_24"
-            android:title="@string/statistics_screen"/>
+            android:title="@string/name_statistics_screen"/>
     <item
             android:id="@+id/menu_screen_settings"
             android:enabled="true"
             android:icon="@drawable/ic_outline_settings_24"
-            android:title="@string/settings_screen"/>
+            android:title="@string/name_settings_screen"/>
 </menu>
