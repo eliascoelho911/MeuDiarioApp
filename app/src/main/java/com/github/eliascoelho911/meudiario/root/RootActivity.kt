@@ -1,10 +1,8 @@
 package com.github.eliascoelho911.meudiario.root
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import com.github.eliascoelho911.meudiario.R
@@ -14,7 +12,7 @@ import com.github.eliascoelho911.meudiario.util.saveFragmentState
 import kotlinx.android.synthetic.main.activity_root.bottomNavigation
 
 private const val SELECTED_ITEM_ON_TAB = "SELECTED_ITEM_ON_TAB"
-private const val DEFAULT_SCREEN = R.id.diary_screen
+private const val DEFAULT_SCREEN = R.id.menu_diary_screen
 
 class RootActivity : AppCompatActivity(R.layout.activity_root) {
     @IdRes
@@ -24,7 +22,7 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         handleSavedInstanceState(savedInstanceState)
-        openScreenById(selectedItemOnTab)
+        openFragmentById(selectedItemOnTab)
         setupBottomNavigation()
     }
 
@@ -41,18 +39,18 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
 
     private fun setupBottomNavigation() {
         bottomNavigation.setOnItemSelectedListener {
-            openScreenById(it.itemId)
+            openFragmentById(it.itemId)
             true
         }
     }
 
-    private fun openScreenById(@IdRes id: Int) {
+    private fun openFragmentById(@IdRes id: Int) {
         when (id) {
-            R.id.diary_screen -> openScreen(DiaryFragment())
+            R.id.menu_diary_screen -> openFragment(DiaryFragment())
         }
     }
 
-    private fun openScreen(fragment: Fragment) {
+    private fun openFragment(fragment: Fragment) {
         supportFragmentManager.commitNow {
             fragmentState?.let {
                 fragment.setInitialSavedState(it)
