@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Meu Diário</string>
+
+    <!-- region Screen names -->
+    <string name="screen_diary">Diário</string>
+    <string name="screen_statistics">Estatísticas</string>
+    <string name="screen_settings">Configurações</string>
+    <!-- endregion -->
+</resources>
