@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter
 import com.github.eliascoelho911.meudiario.screen.Screen
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_diary.registriesPerDays
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,6 +43,12 @@ class DiaryFragment : Fragment(), Screen {
     }
 
     private fun setupRegistriesPerDays() {
-        registriesPerDays.adapter = registryPerDayListAdapter
+        registriesPerDays.apply {
+            adapter = registryPerDayListAdapter
+            val itemDecoration = MaterialDividerItemDecoration(requireContext(), VERTICAL).apply {
+                isLastItemDecorated = false
+            }
+            addItemDecoration(itemDecoration)
+        }
     }
 }

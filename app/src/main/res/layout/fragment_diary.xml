@@ -9,6 +9,7 @@
             android:id="@+id/registriesPerDays"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/size_16"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_registry_per_day"
             app:layout_constraintTop_toTopOf="parent"
