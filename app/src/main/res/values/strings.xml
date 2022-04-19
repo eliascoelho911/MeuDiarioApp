@@ -9,5 +9,10 @@
 
     <!-- region content descriptions -->
     <string name="cd_add_registry">Adiciona registro no diário</string>
+    <string name="cd_mood_very_sad">Se sentindo muito triste</string>
+    <string name="cd_mood_sad">Se sentindo triste</string>
+    <string name="cd_mood_neutral">Se sentindo neutro</string>
+    <string name="cd_mood_happy">Se sentindo feliz</string>
+    <string name="cd_mood_very_happy">Se sentindo muito feliz</string>
     <!-- endregion -->
 </resources>
