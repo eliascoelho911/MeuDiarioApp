@@ -9,8 +9,8 @@ class GetRegistriesPerDayUseCase(
     private val groupRegistriesByDay: GroupRegistriesByDay,
     private val repository: RegistryRepository,
 ) {
-    fun invoke() = repository.getAll().map { groupRegistriesByDay.invoke(it) }.map {
-        it.sortDays().sortRegistries()
+    fun invoke() = repository.getAll().map {
+        groupRegistriesByDay.invoke(it).sortDays().sortRegistries()
     }
 
     private fun List<RegistryPerDayVO>.sortDays() = sortedByDescending { it.date }
