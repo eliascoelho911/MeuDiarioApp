@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
+import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter
 import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter.ViewHolder
+import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
+import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
+import org.koin.java.KoinJavaComponent.inject
 
 class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(DiffUtil) {
 
@@ -25,11 +29,20 @@ class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(Diff
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textDay: TextView by lazy { itemView.findViewById(R.id.textDay) }
         private val textMonth: TextView by lazy { itemView.findViewById(R.id.textMonth) }
+        private val containerDate: ViewGroup by lazy { itemView.findViewById(R.id.containerDate) }
         private val registriesList: RecyclerView by lazy { itemView.findViewById(R.id.registries) }
+        private val registryListAdapter: RegistryListAdapter by inject(RegistryListAdapter::class.java)
 
         fun bind(data: RegistryPerDayVO) {
             textDay.text = data.day
             textMonth.text = data.month
+            containerDate.contentDescription = data.date
+            registryListAdapter.submitList(data.registries)
+            registriesList.apply {
+                adapter = registryListAdapter
+                addMaterialDividerItemDecoration()
+                addMarginBetweenItems(R.dimen.size_8)
+            }
         }
     }
 

@@ -1,12 +1,12 @@
 # Tarefas
 
 **Lista de registros do diário**
-- [ ] Mostrar os dias
+- [x] Mostrar os dias
     - [x] Implementação
-    - [ ] Testes
+    - [x] Testes
 - [ ] Mostrar as informações do registro
-    - [ ] Implementação
-    - [ ] Testes
+    - [x] Implementação
+    - [ ] Acessibilidade
 
 **Fab para adicionar registro**
 - [ ] Quando scrollar para baixo, o fab deve diminuir de tamanho.

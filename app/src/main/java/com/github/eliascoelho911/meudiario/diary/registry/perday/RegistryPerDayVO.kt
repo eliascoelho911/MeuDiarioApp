@@ -5,5 +5,6 @@ import com.github.eliascoelho911.meudiario.diary.registry.RegistryVO
 data class RegistryPerDayVO(
     val day: String,
     val month: String,
+    val date: String,
     val registries: List<RegistryVO>,
 )

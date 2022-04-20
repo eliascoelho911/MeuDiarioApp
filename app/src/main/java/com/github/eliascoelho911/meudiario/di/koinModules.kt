@@ -6,6 +6,7 @@ import com.github.eliascoelho911.meudiario.data.registry.FakeRegistryRepository
 import com.github.eliascoelho911.meudiario.data.registry.RegistryRepository
 import com.github.eliascoelho911.meudiario.diary.DiaryViewModel
 import com.github.eliascoelho911.meudiario.diary.registry.RegistryConverter
+import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter
 import com.github.eliascoelho911.meudiario.diary.registry.perday.GroupRegistriesByDay
 import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,7 @@ val intermediariesModule = module {
 
 val listAdaptersModule = module {
     factory { RegistryPerDayListAdapter() }
+    factory { RegistryListAdapter() }
 }
 
 val allModules = listOf(dataModule, viewModelModule, intermediariesModule, listAdaptersModule)
