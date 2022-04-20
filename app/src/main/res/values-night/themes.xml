@@ -28,5 +28,20 @@
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_primaryInverse</item>
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
+        <item name="textAppearanceDisplayLarge">@style/AppTheme.TextAppearance.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/AppTheme.TextAppearance.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/AppTheme.TextAppearance.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/AppTheme.TextAppearance.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/AppTheme.TextAppearance.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/AppTheme.TextAppearance.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/AppTheme.TextAppearance.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/AppTheme.TextAppearance.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/AppTheme.TextAppearance.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/AppTheme.TextAppearance.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/AppTheme.TextAppearance.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Material3.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/AppTheme.TextAppearance.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/AppTheme.TextAppearance.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/AppTheme.TextAppearance.LabelSmall</item>
     </style>
 </resources>

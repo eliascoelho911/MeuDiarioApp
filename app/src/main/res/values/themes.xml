@@ -29,5 +29,66 @@
         <item name="colorPrimaryInverse">@color/md_theme_light_primaryInverse</item>
         <item name="android:statusBarColor">@color/md_theme_light_background</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="textAppearanceDisplayLarge">@style/AppTheme.TextAppearance.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/AppTheme.TextAppearance.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/AppTheme.TextAppearance.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/AppTheme.TextAppearance.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/AppTheme.TextAppearance.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/AppTheme.TextAppearance.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/AppTheme.TextAppearance.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/AppTheme.TextAppearance.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/AppTheme.TextAppearance.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/AppTheme.TextAppearance.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/AppTheme.TextAppearance.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Material3.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/AppTheme.TextAppearance.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/AppTheme.TextAppearance.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/AppTheme.TextAppearance.LabelSmall</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+    <style name="AppTheme.TextAppearance.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+    <style name="AppTheme.TextAppearance.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="AppTheme.TextAppearance.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+    <style name="AppTheme.TextAppearance.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+    <style name="AppTheme.TextAppearance.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/poppins_medium</item>
     </style>
 </resources>
