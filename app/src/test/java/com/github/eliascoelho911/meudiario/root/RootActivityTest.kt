@@ -18,11 +18,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.common.TestCustomApplication
 import com.github.eliascoelho911.meudiario.common.clickOn
+import com.github.eliascoelho911.meudiario.common.loadAllModulesOnKoin
 import com.github.eliascoelho911.meudiario.diary.DiaryFragment
 import kotlin.reflect.KClass
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.instanceOf
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
@@ -30,6 +32,11 @@ import org.robolectric.annotation.Config
 @RunWith(AndroidJUnit4::class)
 @Config(application = TestCustomApplication::class)
 class RootActivityTest {
+
+    @Before
+    fun setup() {
+        loadAllModulesOnKoin()
+    }
 
     @Test
     fun givenActivityOpened_whenClickOnDiaryTab_shouldOpenDiaryFragment() {
