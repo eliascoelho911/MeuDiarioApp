@@ -10,16 +10,16 @@ class FakeRegistryRepository : RegistryRepository {
     override fun getAll(): Flow<List<RegistryDTO>> =
         flow {
             val allRegistries = mutableListOf<RegistryDTO>()
-            for (i in 0 until 10) {
+            for (i in 11 until 20) {
                 allRegistries.add(RegistryDTO(i,
-                    currentTime.minusMinutes(i.toLong()),
+                    currentTime.minusDays(i.toLong()),
                     "item $i",
                     "Corpo do item $i é esse aqui",
                     Mood.NEUTRAL))
             }
-            for (i in 11 until 20) {
+            for (i in 0 until 10) {
                 allRegistries.add(RegistryDTO(i,
-                    currentTime.minusDays(i.toLong()),
+                    currentTime.minusMinutes(i.toLong()),
                     "item $i",
                     "Corpo do item $i é esse aqui",
                     Mood.NEUTRAL))

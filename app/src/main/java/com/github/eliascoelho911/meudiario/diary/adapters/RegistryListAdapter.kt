@@ -1,4 +1,4 @@
-package com.github.eliascoelho911.meudiario.diary.registry
+package com.github.eliascoelho911.meudiario.diary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
-import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter.ViewHolder
+import com.github.eliascoelho911.meudiario.diary.adapters.RegistryListAdapter.ViewHolder
+import com.github.eliascoelho911.meudiario.diary.vo.RegistryVO
 
 class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil()) {
 
@@ -32,7 +33,7 @@ class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil()) {
         fun bind(item: RegistryVO) {
             textTitle.text = item.title
             textBody.text = item.body
-            textTime.text = item.time
+            textTime.text = item.timeFormatted
             imgMood.setImageResource(item.moodRes)
             imgMood.contentDescription = item.moodDescription
         }

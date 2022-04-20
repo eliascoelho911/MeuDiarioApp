@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.eliascoelho911.meudiario.R
-import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter
+import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter
 import com.github.eliascoelho911.meudiario.screen.Screen
 import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
@@ -40,9 +40,11 @@ class DiaryFragment : Fragment(), Screen {
             val dy = oldScrollY - scrollY
 
             if (dy > 0) {
-                fabAddRegistry.extend()
+                if (!fabAddRegistry.isExtended)
+                    fabAddRegistry.extend()
             } else {
-                fabAddRegistry.shrink()
+                if (fabAddRegistry.isExtended)
+                    fabAddRegistry.shrink()
             }
         }
     }

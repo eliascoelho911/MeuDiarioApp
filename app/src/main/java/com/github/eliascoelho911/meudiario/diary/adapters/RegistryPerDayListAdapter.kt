@@ -1,4 +1,4 @@
-package com.github.eliascoelho911.meudiario.diary.registry.perday
+package com.github.eliascoelho911.meudiario.diary.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
-import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter
-import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter.ViewHolder
+import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter.ViewHolder
+import com.github.eliascoelho911.meudiario.diary.vo.RegistryPerDayVO
 import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
 import org.koin.java.KoinJavaComponent.inject
@@ -46,7 +46,7 @@ class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(Diff
         fun bind(data: RegistryPerDayVO) {
             textDay.text = data.day
             textMonth.text = data.month
-            containerDate.contentDescription = data.date
+            containerDate.contentDescription = data.date.toString()
             registryListAdapter.submitList(data.registries)
         }
     }

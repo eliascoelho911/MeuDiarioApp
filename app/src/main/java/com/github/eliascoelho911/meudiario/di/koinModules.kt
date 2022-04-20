@@ -5,10 +5,11 @@ import com.github.eliascoelho911.meudiario.data.AppDatabase
 import com.github.eliascoelho911.meudiario.data.registry.FakeRegistryRepository
 import com.github.eliascoelho911.meudiario.data.registry.RegistryRepository
 import com.github.eliascoelho911.meudiario.diary.DiaryViewModel
-import com.github.eliascoelho911.meudiario.diary.registry.RegistryConverter
-import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter
-import com.github.eliascoelho911.meudiario.diary.registry.perday.GroupRegistriesByDay
-import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayListAdapter
+import com.github.eliascoelho911.meudiario.diary.converters.RegistryConverter
+import com.github.eliascoelho911.meudiario.diary.adapters.RegistryListAdapter
+import com.github.eliascoelho911.meudiario.diary.usecases.GetRegistriesPerDayUseCase
+import com.github.eliascoelho911.meudiario.diary.helpers.GroupRegistriesByDay
+import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,10 +21,10 @@ val dataModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { DiaryViewModel(get(), Dispatchers.IO, get()) }
+    viewModel { DiaryViewModel(Dispatchers.IO, get()) }
 }
 
-val intermediariesModule = module {
+val helpersModule = module {
     single { RegistryConverter(get()) }
     single { GroupRegistriesByDay(get()) }
 }
@@ -33,4 +34,8 @@ val listAdaptersModule = module {
     factory { RegistryListAdapter() }
 }
 
-val allModules = listOf(dataModule, viewModelModule, intermediariesModule, listAdaptersModule)
+val useCaseModule = module {
+    single { GetRegistriesPerDayUseCase(get(), get()) }
+}
+
+val allModules = listOf(dataModule, viewModelModule, helpersModule, listAdaptersModule, useCaseModule)

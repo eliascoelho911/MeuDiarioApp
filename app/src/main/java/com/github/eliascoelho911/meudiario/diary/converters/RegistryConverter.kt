@@ -1,10 +1,11 @@
-package com.github.eliascoelho911.meudiario.diary.registry
+package com.github.eliascoelho911.meudiario.diary.converters
 
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.data.registry.Mood
 import com.github.eliascoelho911.meudiario.data.registry.RegistryDTO
+import com.github.eliascoelho911.meudiario.diary.vo.RegistryVO
 import java.time.format.DateTimeFormatter
 
 class RegistryConverter(private val context: Context) {
@@ -14,6 +15,7 @@ class RegistryConverter(private val context: Context) {
         data.map {
             val hour = it.dateTime.format(hourFormatter)
             RegistryVO(it.id,
+                it.dateTime,
                 hour,
                 it.title,
                 it.body,
