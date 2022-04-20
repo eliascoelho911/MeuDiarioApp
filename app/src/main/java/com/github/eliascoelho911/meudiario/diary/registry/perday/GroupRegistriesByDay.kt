@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 
 class GroupRegistriesByDay(private val registryConverter: RegistryConverter) {
     private val delimiterDate = "/"
-    private val dayMonthFormatter by lazy { DateTimeFormatter.ofPattern("dd${delimiterDate}MMM") }
+    private val dayMonthFormatter by lazy { DateTimeFormatter.ofPattern("dd${delimiterDate}MMM${delimiterDate}yyyy") }
 
     fun invoke(registries: List<RegistryDTO>): List<RegistryPerDayVO> =
         registries.groupBy { it.dateTime.format(dayMonthFormatter) }.map { groupedItem ->

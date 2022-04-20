@@ -21,15 +21,21 @@ class RecyclerViewItemMargin(
         parent: RecyclerView,
         state: RecyclerView.State,
     ) {
-        when (parent.getChildLayoutPosition(view)) {
-            0 -> {
-                applyMargin(outRect, top = false)
-            }
-            parent.adapter?.itemCount!! - 1 -> {
-                applyMargin(outRect, bottom = isLastItemDecoration)
-            }
-            else -> {
-                applyMargin(outRect)
+        val childCount = parent.adapter?.itemCount!!
+
+        if (childCount == 1) {
+            applyMargin(outRect, top = false, bottom = isLastItemDecoration)
+        } else {
+            when (parent.getChildLayoutPosition(view)) {
+                0 -> {
+                    applyMargin(outRect, top = false)
+                }
+                childCount - 1 -> {
+                    applyMargin(outRect, bottom = isLastItemDecoration)
+                }
+                else -> {
+                    applyMargin(outRect)
+                }
             }
         }
     }

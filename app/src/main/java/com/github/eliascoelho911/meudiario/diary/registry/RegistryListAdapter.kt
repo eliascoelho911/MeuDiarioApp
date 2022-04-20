@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.registry.RegistryListAdapter.ViewHolder
 
-class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil) {
+class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,9 +38,9 @@ class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil) {
         }
     }
 
-    object DiffUtil : ItemCallback<RegistryVO>() {
+    class DiffUtil : ItemCallback<RegistryVO>() {
         override fun areItemsTheSame(oldItem: RegistryVO, newItem: RegistryVO) =
-            oldItem.time == newItem.time
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: RegistryVO, newItem: RegistryVO) =
             oldItem == newItem

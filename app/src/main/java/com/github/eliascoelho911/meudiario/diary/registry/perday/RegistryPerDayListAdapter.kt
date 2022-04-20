@@ -14,12 +14,14 @@ import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
 import org.koin.java.KoinJavaComponent.inject
 
-class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(DiffUtil) {
+class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(DiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_registry_per_day, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view).also {
+            it.setupRegistriesList()
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -33,24 +35,27 @@ class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(Diff
         private val registriesList: RecyclerView by lazy { itemView.findViewById(R.id.registries) }
         private val registryListAdapter: RegistryListAdapter by inject(RegistryListAdapter::class.java)
 
-        fun bind(data: RegistryPerDayVO) {
-            textDay.text = data.day
-            textMonth.text = data.month
-            containerDate.contentDescription = data.date
-            registryListAdapter.submitList(data.registries)
+        fun setupRegistriesList() {
             registriesList.apply {
                 adapter = registryListAdapter
                 addMaterialDividerItemDecoration()
                 addMarginBetweenItems(R.dimen.size_8)
             }
         }
+
+        fun bind(data: RegistryPerDayVO) {
+            textDay.text = data.day
+            textMonth.text = data.month
+            containerDate.contentDescription = data.date
+            registryListAdapter.submitList(data.registries)
+        }
     }
 
-    object DiffUtil : ItemCallback<RegistryPerDayVO>() {
+    class DiffUtil : ItemCallback<RegistryPerDayVO>() {
         override fun areItemsTheSame(
             oldItem: RegistryPerDayVO,
             newItem: RegistryPerDayVO,
-        ): Boolean = oldItem.day == newItem.day && oldItem.month == newItem.month
+        ): Boolean = oldItem.date == newItem.date
 
         override fun areContentsTheSame(
             oldItem: RegistryPerDayVO,

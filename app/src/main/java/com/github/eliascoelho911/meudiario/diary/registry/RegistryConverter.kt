@@ -13,7 +13,8 @@ class RegistryConverter(private val context: Context) {
     fun convert(data: List<RegistryDTO>): List<RegistryVO> =
         data.map {
             val hour = it.dateTime.format(hourFormatter)
-            RegistryVO(hour,
+            RegistryVO(it.id,
+                hour,
                 it.title,
                 it.body,
                 getMoodDescription(it.mood),
