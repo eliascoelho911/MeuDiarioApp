@@ -8,16 +8,17 @@ import com.github.eliascoelho911.meudiario.data.registry.RegistryDTO
 import java.time.format.DateTimeFormatter
 
 class RegistryConverter(private val context: Context) {
-    private val hourFormatter by lazy { DateTimeFormatter.ofPattern("hh:MM") }
+    private val hourFormatter by lazy { DateTimeFormatter.ofPattern("HH:mm") }
 
-    fun convert(dto: RegistryDTO): RegistryVO {
-        val hour = dto.dateTime.format(hourFormatter)
-        return RegistryVO(hour,
-            dto.title,
-            dto.body,
-            getMoodDescription(dto.mood),
-            getMoodIcon(dto.mood))
-    }
+    fun convert(data: List<RegistryDTO>): List<RegistryVO> =
+        data.map {
+            val hour = it.dateTime.format(hourFormatter)
+            RegistryVO(hour,
+                it.title,
+                it.body,
+                getMoodDescription(it.mood),
+                getMoodIcon(it.mood))
+        }
 
     private fun getMoodDescription(mood: Mood) = when (mood) {
         Mood.VERY_SAD -> context.getString(R.string.cd_mood_very_sad)

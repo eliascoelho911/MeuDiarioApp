@@ -12,7 +12,7 @@ class GroupRegistriesByDay(private val registryConverter: RegistryConverter) {
         registries.groupBy { it.dateTime.format(dayMonthFormatter) }.map { groupedItem ->
             val day = groupedItem.key.split(delimiterDate)[0]
             val month = groupedItem.key.split(delimiterDate)[1].lowercase()
-            val registriesVO = groupedItem.value.map { registryConverter.convert(it) }
+            val registriesVO = registryConverter.convert(groupedItem.value)
             RegistryPerDayVO(day, month, registriesVO)
         }
 }
