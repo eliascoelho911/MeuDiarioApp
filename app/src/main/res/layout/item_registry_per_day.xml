@@ -38,7 +38,6 @@
             android:id="@+id/registries"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true"
             tools:listitem="@layout/item_registry"
             tools:itemCount="2"
             android:layout_marginStart="@dimen/size_16"

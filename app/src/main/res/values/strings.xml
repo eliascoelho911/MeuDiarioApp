@@ -7,8 +7,12 @@
     <string name="name_settings_screen">Configurações</string>
     <!-- endregion -->
 
+    <!-- region diary screen -->
+    <string name="fab_add_registry">Adicionar Registro</string>
+    <!-- endregion -->
+
     <!-- region content descriptions -->
-    <string name="cd_add_registry">Adiciona registro no diário</string>
+    <string name="cd_add_registry">Adicionar registro no diário</string>
     <string name="cd_mood_very_sad">Se sentindo muito triste</string>
     <string name="cd_mood_sad">Se sentindo triste</string>
     <string name="cd_mood_neutral">Se sentindo neutro</string>

@@ -4,9 +4,9 @@
 - [x] Mostrar os dias
     - [x] Implementação
     - [x] Testes
-- [ ] Mostrar as informações do registro
+- [x] Mostrar as informações do registro
     - [x] Implementação
-    - [ ] Acessibilidade
+    - [x] Acessibilidade
 
 **Fab para adicionar registro**
 - [ ] Quando scrollar para baixo, o fab deve diminuir de tamanho.

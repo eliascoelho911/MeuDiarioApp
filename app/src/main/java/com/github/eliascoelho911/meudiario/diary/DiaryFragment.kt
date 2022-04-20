@@ -10,6 +10,8 @@ import com.github.eliascoelho911.meudiario.diary.registry.perday.RegistryPerDayL
 import com.github.eliascoelho911.meudiario.screen.Screen
 import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
+import kotlinx.android.synthetic.main.fragment_diary.containerDiary
+import kotlinx.android.synthetic.main.fragment_diary.fabAddRegistry
 import kotlinx.android.synthetic.main.fragment_diary.registriesPerDays
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,6 +32,19 @@ class DiaryFragment : Fragment(), Screen {
         super.onViewCreated(view, savedInstanceState)
         setupRegistriesPerDays()
         setupObservers()
+        autoExtendFabOnScrollChange()
+    }
+
+    private fun autoExtendFabOnScrollChange() {
+        containerDiary.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+            val dy = oldScrollY - scrollY
+
+            if (dy > 0) {
+                fabAddRegistry.extend()
+            } else {
+                fabAddRegistry.shrink()
+            }
+        }
     }
 
     private fun setupObservers() {
