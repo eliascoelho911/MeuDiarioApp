@@ -22,24 +22,25 @@
                     android:layout_marginHorizontal="@dimen/size_16"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_registry_per_day"
+                    tools:itemCount="3"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="72dp" />
+                    android:layout_width="0dp"
+                    android:layout_height="112dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddRegistry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_add_24"
+            android:src="@drawable/ic_add_24"
             android:layout_margin="@dimen/size_16"
             android:layout_gravity="bottom|end"
-            android:contentDescription="@string/cd_add_registry"
-            android:text="@string/fab_add_registry" />
+            style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+            android:contentDescription="@string/cd_add_registry" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -32,21 +32,6 @@ class DiaryFragment : Fragment(), Screen {
         super.onViewCreated(view, savedInstanceState)
         setupRegistriesPerDays()
         setupObservers()
-        autoExtendFabOnScrollChange()
-    }
-
-    private fun autoExtendFabOnScrollChange() {
-        containerDiary.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-            val dy = oldScrollY - scrollY
-
-            if (dy > 0) {
-                if (!fabAddRegistry.isExtended)
-                    fabAddRegistry.extend()
-            } else {
-                if (fabAddRegistry.isExtended)
-                    fabAddRegistry.shrink()
-            }
-        }
     }
 
     private fun setupObservers() {
