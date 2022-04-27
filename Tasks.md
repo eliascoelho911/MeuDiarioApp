@@ -1,15 +1,9 @@
 # Tarefas
 
-**Lista de registros do diário**
-- [x] Mostrar os dias
-    - [x] Implementação
-    - [x] Testes
-- [x] Mostrar as informações do registro
-    - [x] Implementação
-    - [x] Acessibilidade
-
-**Fab para adicionar registro**
-- [x] Quando scrollar para baixo, o fab deve diminuir de tamanho.
-    - [x] Implementação
-- [x] Quando scrollar para cima, o fab deve voltar para o tamanho grande.
-    - [x] Implementação
+**26/04**
+- [x] Implementar busca
+- [ ] Alterar fonte da barra de busca
+- [ ] Fechar busca no backstack
+- [ ] Refatorar estrutura de pacotes para clean arch
+- [ ] Testar busca
+- [ ] Implementar alteração da cor da toolbar ao scrollar

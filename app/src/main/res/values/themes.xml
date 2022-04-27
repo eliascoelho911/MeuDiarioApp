@@ -44,6 +44,7 @@
         <item name="textAppearanceLabelLarge">@style/AppTheme.TextAppearance.LabelLarge</item>
         <item name="textAppearanceLabelMedium">@style/AppTheme.TextAppearance.LabelMedium</item>
         <item name="textAppearanceLabelSmall">@style/AppTheme.TextAppearance.LabelSmall</item>
+        <item name="searchViewStyle">@style/AppTheme.SearchView</item>
     </style>
 
     <style name="AppTheme.TextAppearance.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
@@ -90,5 +91,10 @@
     </style>
     <style name="AppTheme.TextAppearance.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
         <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="defaultQueryHint">@string/cd_search</item>
+        <item name="searchHintIcon">@null</item>
     </style>
 </resources>

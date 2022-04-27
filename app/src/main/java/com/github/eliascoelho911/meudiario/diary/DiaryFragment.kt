@@ -2,22 +2,27 @@ package com.github.eliascoelho911.meudiario.diary
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter
+import com.github.eliascoelho911.meudiario.root.RootActivityManager
 import com.github.eliascoelho911.meudiario.screen.Screen
 import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
-import kotlinx.android.synthetic.main.fragment_diary.containerDiary
-import kotlinx.android.synthetic.main.fragment_diary.fabAddRegistry
+import com.github.eliascoelho911.meudiario.util.setOnActionExpandListener
+import com.github.eliascoelho911.meudiario.util.setOnQueryTextChange
 import kotlinx.android.synthetic.main.fragment_diary.registriesPerDays
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DiaryFragment : Fragment(), Screen {
     private val registryPerDayListAdapter: RegistryPerDayListAdapter by inject()
+    private val rootActivityManager: RootActivityManager by inject()
     private val viewModel by viewModel<DiaryViewModel>()
 
     override val title: String by lazy { getString(R.string.name_diary_screen) }
@@ -32,6 +37,46 @@ class DiaryFragment : Fragment(), Screen {
         super.onViewCreated(view, savedInstanceState)
         setupRegistriesPerDays()
         setupObservers()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        with(rootActivityManager) {
+            setToolbarMenuRes(R.menu.default_toolbar_menu)
+            findToolbarMenuItem(R.id.action_search)?.run {
+                showComponentsOnCloseSearch()
+                hideComponentsOnClickActionSearch()
+                setupSearch()
+            }
+        }
+    }
+
+    private fun MenuItem.setupSearch() {
+        actionView.run {
+            this as SearchView
+            setOnQueryTextChange { query ->
+                filterRegistriesByQuery(query)
+                false
+            }
+        }
+    }
+
+    private fun MenuItem.hideComponentsOnClickActionSearch() {
+        setOnMenuItemClickListener {
+            if (it.itemId == R.id.action_search) rootActivityManager.hide()
+            true
+        }
+    }
+
+    private fun MenuItem.showComponentsOnCloseSearch() {
+        setOnActionExpandListener(onMenuItemActionCollapse = {
+            rootActivityManager.show()
+            true
+        })
+    }
+
+    private fun filterRegistriesByQuery(query: String) {
+        registryPerDayListAdapter.submitList(viewModel.searchRegistries(query))
     }
 
     private fun setupObservers() {

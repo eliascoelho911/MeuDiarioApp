@@ -12,6 +12,9 @@ import com.github.eliascoelho911.meudiario.util.getFragmentState
 import com.github.eliascoelho911.meudiario.util.saveFragmentState
 import kotlinx.android.synthetic.main.activity_root.bottomNavigation
 import kotlinx.android.synthetic.main.activity_root.toolbar
+import kotlinx.android.synthetic.main.fragment_diary.fabAddRegistry
+import org.koin.core.context.loadKoinModules
+import org.koin.dsl.module
 
 private const val SELECTED_ITEM_ON_TAB = "SELECTED_ITEM_ON_TAB"
 private const val DEFAULT_SCREEN = R.id.menu_diary_screen
@@ -26,12 +29,19 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
         handleSavedInstanceState(savedInstanceState)
         openFragmentById(selectedItemOnTab)
         setupBottomNavigation()
+        loadManagersOnKoin()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.saveFragmentState(supportFragmentManager, R.id.container)
         outState.saveSelectedItemOnTab()
         super.onSaveInstanceState(outState)
+    }
+
+    private fun loadManagersOnKoin() {
+        loadKoinModules(module {
+            single { RootActivityManager(bottomNavigation, toolbar, fabAddRegistry) }
+        })
     }
 
     private fun handleSavedInstanceState(savedInstanceState: Bundle?) {

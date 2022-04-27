@@ -5,14 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.adapters.RegistryListAdapter.ViewHolder
 import com.github.eliascoelho911.meudiario.diary.vo.RegistryVO
+import com.github.eliascoelho911.meudiario.util.ListAdapter
 
-class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil()) {
+class RegistryListAdapter : ListAdapter<ViewHolder, RegistryVO>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -37,13 +36,5 @@ class RegistryListAdapter : ListAdapter<RegistryVO, ViewHolder>(DiffUtil()) {
             imgMood.setImageResource(item.moodRes)
             imgMood.contentDescription = item.moodDescription
         }
-    }
-
-    class DiffUtil : ItemCallback<RegistryVO>() {
-        override fun areItemsTheSame(oldItem: RegistryVO, newItem: RegistryVO) =
-            oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: RegistryVO, newItem: RegistryVO) =
-            oldItem == newItem
     }
 }

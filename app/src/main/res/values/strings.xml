@@ -18,5 +18,6 @@
     <string name="cd_mood_neutral">Se sentindo neutro</string>
     <string name="cd_mood_happy">Se sentindo feliz</string>
     <string name="cd_mood_very_happy">Se sentindo muito feliz</string>
+    <string name="cd_search">Pesquisar</string>
     <!-- endregion -->
 </resources>

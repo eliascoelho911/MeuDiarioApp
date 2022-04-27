@@ -4,17 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.eliascoelho911.meudiario.R
 import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter.ViewHolder
 import com.github.eliascoelho911.meudiario.diary.vo.RegistryPerDayVO
+import com.github.eliascoelho911.meudiario.util.ListAdapter
 import com.github.eliascoelho911.meudiario.util.addMarginBetweenItems
 import com.github.eliascoelho911.meudiario.util.addMaterialDividerItemDecoration
 import org.koin.java.KoinJavaComponent.inject
 
-class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(DiffUtil()) {
+class RegistryPerDayListAdapter : ListAdapter<ViewHolder, RegistryPerDayVO>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -33,6 +32,7 @@ class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(Diff
         private val textMonth: TextView by lazy { itemView.findViewById(R.id.textMonth) }
         private val containerDate: ViewGroup by lazy { itemView.findViewById(R.id.containerDate) }
         private val registriesList: RecyclerView by lazy { itemView.findViewById(R.id.registries) }
+
         private val registryListAdapter: RegistryListAdapter by inject(RegistryListAdapter::class.java)
 
         fun setupRegistriesList() {
@@ -49,17 +49,5 @@ class RegistryPerDayListAdapter : ListAdapter<RegistryPerDayVO, ViewHolder>(Diff
             containerDate.contentDescription = data.date.toString()
             registryListAdapter.submitList(data.registries)
         }
-    }
-
-    class DiffUtil : ItemCallback<RegistryPerDayVO>() {
-        override fun areItemsTheSame(
-            oldItem: RegistryPerDayVO,
-            newItem: RegistryPerDayVO,
-        ): Boolean = oldItem.date == newItem.date
-
-        override fun areContentsTheSame(
-            oldItem: RegistryPerDayVO,
-            newItem: RegistryPerDayVO,
-        ): Boolean = oldItem == newItem
     }
 }

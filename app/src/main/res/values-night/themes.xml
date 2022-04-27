@@ -43,5 +43,6 @@
         <item name="textAppearanceLabelLarge">@style/AppTheme.TextAppearance.LabelLarge</item>
         <item name="textAppearanceLabelMedium">@style/AppTheme.TextAppearance.LabelMedium</item>
         <item name="textAppearanceLabelSmall">@style/AppTheme.TextAppearance.LabelSmall</item>
+        <item name="searchViewStyle">@style/AppTheme.SearchView</item>
     </style>
 </resources>
