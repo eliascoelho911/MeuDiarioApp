@@ -5,7 +5,7 @@ import com.github.eliascoelho911.meudiario.presenter.diary.vo.RegistryPerDayVO
 import java.time.format.TextStyle
 import java.util.Locale
 
-class RegistryPerDayConverter {
+class RegistryPerDayConverter(private val registryConverter: RegistryConverter) {
     fun convert(data: List<RegistryPerDay>): List<RegistryPerDayVO> = data.map {
         val day = it.date.dayOfMonth.toString()
         val month = it.date.month.getDisplayName(TextStyle.SHORT, Locale.getDefault())
@@ -13,6 +13,6 @@ class RegistryPerDayConverter {
             day = day,
             month = month,
             date = it.date,
-            registries = it.registries)
+            registries = registryConverter.convert(it.registries))
     }
 }

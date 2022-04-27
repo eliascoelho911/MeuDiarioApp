@@ -10,7 +10,7 @@ class SearchRegistriesPerDayByQueryUseCase(
     fun invoke(query: String) = registriesPerDay.map { list ->
         list.map { perDayIt ->
             perDayIt.copy(registries = perDayIt.registries.filter {
-                it.title.contains(query, ignoreCase = false) or
+                it.title.contains(query, ignoreCase = true) or
                         it.body.contains(query, ignoreCase = true)
             })
         }.filter { it.registries.isNotEmpty() }

@@ -24,13 +24,13 @@ val dataModule = module {
 val presenterModule = module {
     viewModel { DiaryViewModel(Dispatchers.IO, get(), get(), get()) }
     single { RegistryConverter(get()) }
-    single { RegistryPerDayConverter() }
+    single { RegistryPerDayConverter(get()) }
     factory { RegistryPerDayListAdapter() }
     factory { RegistryListAdapter() }
 }
 
 val domainModule = module {
-    single { GetRegistriesPerDayUseCase(get(), get()) }
+    single { GetRegistriesPerDayUseCase(get()) }
     single { SearchRegistriesPerDayByQueryUseCase(get()) }
 }
 
