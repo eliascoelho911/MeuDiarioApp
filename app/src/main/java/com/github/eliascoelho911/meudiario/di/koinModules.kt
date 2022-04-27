@@ -2,13 +2,15 @@ package com.github.eliascoelho911.meudiario.di
 
 import androidx.room.Room
 import com.github.eliascoelho911.meudiario.data.AppDatabase
-import com.github.eliascoelho911.meudiario.data.registry.FakeRegistryRepository
-import com.github.eliascoelho911.meudiario.data.registry.RegistryRepository
-import com.github.eliascoelho911.meudiario.diary.DiaryViewModel
-import com.github.eliascoelho911.meudiario.diary.adapters.RegistryListAdapter
-import com.github.eliascoelho911.meudiario.diary.adapters.RegistryPerDayListAdapter
-import com.github.eliascoelho911.meudiario.diary.converters.RegistryConverter
-import com.github.eliascoelho911.meudiario.diary.usecases.GetRegistriesPerDayUseCase
+import com.github.eliascoelho911.meudiario.data.repository.FakeRegistryRepository
+import com.github.eliascoelho911.meudiario.domain.repositories.RegistryRepository
+import com.github.eliascoelho911.meudiario.presenter.diary.DiaryViewModel
+import com.github.eliascoelho911.meudiario.presenter.diary.adapter.RegistryListAdapter
+import com.github.eliascoelho911.meudiario.presenter.diary.adapter.RegistryPerDayListAdapter
+import com.github.eliascoelho911.meudiario.presenter.converters.RegistryConverter
+import com.github.eliascoelho911.meudiario.domain.usecases.GetRegistriesPerDayUseCase
+import com.github.eliascoelho911.meudiario.domain.usecases.SearchRegistriesPerDayByQueryUseCase
+import com.github.eliascoelho911.meudiario.presenter.converters.RegistryPerDayConverter
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,25 +21,19 @@ val dataModule = module {
     single<RegistryRepository> { FakeRegistryRepository() }
 }
 
-val viewModelModule = module {
-    viewModel { DiaryViewModel(Dispatchers.IO, get()) }
-}
-
-val convertersModule = module {
+val presenterModule = module {
+    viewModel { DiaryViewModel(Dispatchers.IO, get(), get(), get()) }
     single { RegistryConverter(get()) }
-}
-
-val listAdaptersModule = module {
+    single { RegistryPerDayConverter() }
     factory { RegistryPerDayListAdapter() }
     factory { RegistryListAdapter() }
 }
 
-val useCaseModule = module {
+val domainModule = module {
     single { GetRegistriesPerDayUseCase(get(), get()) }
+    single { SearchRegistriesPerDayByQueryUseCase(get()) }
 }
 
 val allModules = listOf(dataModule,
-    viewModelModule,
-    convertersModule,
-    listAdaptersModule,
-    useCaseModule)
+    presenterModule,
+    domainModule)

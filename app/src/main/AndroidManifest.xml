@@ -9,9 +9,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:name=".root.RootApplication">
+            android:name=".presenter.root.RootApplication">
         <activity
-                android:name=".root.RootActivity"
+                android:name=".presenter.root.RootActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
