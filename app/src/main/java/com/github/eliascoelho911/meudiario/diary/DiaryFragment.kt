@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.github.eliascoelho911.meudiario.R
@@ -24,6 +25,7 @@ class DiaryFragment : Fragment(), Screen {
     private val registryPerDayListAdapter: RegistryPerDayListAdapter by inject()
     private val rootActivityManager: RootActivityManager by inject()
     private val viewModel by viewModel<DiaryViewModel>()
+    private var collapseOnBackPressed: OnBackPressedCallback? = null
 
     override val title: String by lazy { getString(R.string.name_diary_screen) }
 
@@ -44,8 +46,8 @@ class DiaryFragment : Fragment(), Screen {
         with(rootActivityManager) {
             setToolbarMenuRes(R.menu.default_toolbar_menu)
             findToolbarMenuItem(R.id.action_search)?.run {
-                showComponentsOnCloseSearch()
-                hideComponentsOnClickActionSearch()
+                onCloseSearch()
+                setupListeners()
                 setupSearch()
             }
         }
@@ -61,16 +63,20 @@ class DiaryFragment : Fragment(), Screen {
         }
     }
 
-    private fun MenuItem.hideComponentsOnClickActionSearch() {
+    private fun MenuItem.setupListeners() {
         setOnMenuItemClickListener {
-            if (it.itemId == R.id.action_search) rootActivityManager.hide()
+            if (it.itemId == R.id.action_search) {
+                rootActivityManager.hide()
+                enableCollapseOnBackPressed()
+            }
             true
         }
     }
 
-    private fun MenuItem.showComponentsOnCloseSearch() {
+    private fun MenuItem.onCloseSearch() {
         setOnActionExpandListener(onMenuItemActionCollapse = {
             rootActivityManager.show()
+            disableCollapseOnBackPressed()
             true
         })
     }
@@ -95,5 +101,17 @@ class DiaryFragment : Fragment(), Screen {
             addMaterialDividerItemDecoration()
             addMarginBetweenItems(R.dimen.size_8)
         }
+    }
+
+    private fun disableCollapseOnBackPressed() {
+        collapseOnBackPressed?.remove()
+        collapseOnBackPressed = null
+    }
+
+    private fun enableCollapseOnBackPressed() {
+        if (collapseOnBackPressed == null)
+            collapseOnBackPressed = requireActivity().onBackPressedDispatcher.addCallback {
+                rootActivityManager.collapseToolbarActionView()
+            }
     }
 }

@@ -47,4 +47,8 @@ class RootActivityManager(
     }
 
     fun findToolbarMenuItem(@IdRes id: Int): MenuItem? = toolbar.menu.findItem(id)
+
+    fun collapseToolbarActionView() {
+        toolbar.collapseActionView()
+    }
 }
